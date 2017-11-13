@@ -96,28 +96,28 @@ set_position(X,Y):-
   retract(player(CurrentX,CurrentY,Health,Hunger,Thirst,Weapon,ItemList)),
   asserta(player(X,Y,Health,Hunger,Thirst,Weapon,NewItemList)).
 
-step_up:-
+n:-
   player(X,CurrentY,Health,Hunger,Thirst,Weapon,ItemList),
   CurrentY > 0,
   retract(player(X,CurrentY,Health,Hunger,Thirst,Weapon,ItemList)),
   Y is CurrentY-1,
   asserta(player(X,Y,Health,Hunger,Thirst,Weapon,NewItemList)).
 
-step_down:-
+s:-
   player(X,CurrentY,Health,Hunger,Thirst,Weapon,ItemList),
   CurrentY < 20,
   retract(player(X,CurrentY,Health,Hunger,Thirst,Weapon,ItemList)),
   Y is CurrentY+1,
   asserta(player(X,Y,Health,Hunger,Thirst,Weapon,NewItemList)).
 
-step_left:-
+w:-
   player(CurrentX,Y,Health,Hunger,Thirst,Weapon,ItemList),
   CurrentX > 0,
   retract(player(CurrentX,Y,Health,Hunger,Thirst,Weapon,ItemList)),
   X is CurrentX-1,
   asserta(player(X,Y,Health,Hunger,Thirst,Weapon,NewItemList)).
 
-step_right:-
+e:-
   player(CurrentX,Y,Health,Hunger,Thirst,Weapon,ItemList),
   CurrentX < 10,
   retract(player(CurrentX,Y,Health,Hunger,Thirst,Weapon,ItemList)),
