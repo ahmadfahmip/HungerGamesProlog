@@ -1,6 +1,6 @@
 /* Hentikan semua kegilaan ini */
 
-init :- g_assign(started, 0).
+initialize :- g_assign(started, 0).
 start :- 
 	g_read(started, X), X = 0, 
 	welcome,
@@ -15,4 +15,4 @@ welcome :-
 
 help :-
 	write('Available commands:'), nl,
-	
+
