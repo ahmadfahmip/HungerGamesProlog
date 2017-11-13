@@ -13,4 +13,6 @@ welcome :-
 	write('Be the last man standing and you will be remembered as one of the victors.'),
 	nl.
 
-
+help :-
+	write('Available commands:'), nl,
+	
