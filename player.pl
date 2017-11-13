@@ -1,14 +1,11 @@
-/* Facts */
-max_health(120).
+:- dynamic(player/6).
 
-/* Inisialisasi */
-default_health(120).
+default_health(100).
 default_hunger(20).
 default_thirst(50).
 default_weapon('nothing').
 default_item_list([]).
 
-/* Rule */
 init_player(ID):-
   default_health(Health),
   default_hunger(Hunger),
@@ -19,13 +16,7 @@ init_player(ID):-
   asserta(player(ID,Health,Hunger,Thirst,Weapon,ItemList)).
 
 % Health
-increase_health(ID, Amount) :-
-  retract(player(ID,Health,Hunger,Thirst,Weapon,ItemList)),
-  ResultHealth is Health+Amount,
-  max_health(MaxHealth),
-  ResultHealth > MaxHealth,
-  asserta(player(ID,MaxHealth,Hunger,Thirst,Weapon,ItemList)).
-increase_health(ID, Amount) :-
+increase_health(ID, Amount):-
   retract(player(ID,Health,Hunger,Thirst,Weapon,ItemList)),
   ResultHealth is Health+Amount,
   asserta(player(ID,ResultHealth,Hunger,Thirst,Weapon,ItemList)).
@@ -72,12 +63,11 @@ decrease_thirst(ID,Amount):-
   asserta(player(ID,Health,Hunger,ResultThirst,Weapon,ItemList)).
 
 get_thirst(ID,Thirst):-
-  init_player(ID,_,_,Thirst,_,_).
+  player(ID,_,_,Thirst,_,_).
 
 set_thirst(ID,Thirst):-
   retract(player(ID,Health,Hunger,CurrentThirst,Weapon,ItemList)),
   asserta(player(ID,Health,Hunger,Thirst,Weapon,ItemList)).
-
 
 % Weapon
 set_weapon(ID,Weapon):-
@@ -86,7 +76,6 @@ set_weapon(ID,Weapon):-
 
 get_weapon(ID,Weapon):-
   player(ID,_,_,_,Weapon,_).
-
 
 % Item List
 add_item(ID,Item):-
