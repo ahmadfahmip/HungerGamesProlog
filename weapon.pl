@@ -1,6 +1,5 @@
 weapon('nothing',0).
-weapon('baseball bat',10).
-weapon('knife',20).
-weapon('pistol',50).
-weapon('pistol',50).
-weapon('shotgun',70).
+weapon('webtoon',10).
+weapon('anime',20).
+weapon('dota',50).
+weapon('osjur',70).
