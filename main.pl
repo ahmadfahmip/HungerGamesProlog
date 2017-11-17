@@ -1,20 +1,24 @@
 /* Hentikan semua kegilaan ini */
-start :-
+
+start :- 
 	g_read(started, X), X = 0, !,
 	welcome,
 	g_assign(started, 1),
 	main_loop.
-start :- g_read(started, X), X = 1, write('Game sudah dimulai'), nl.
+start :- g_read(started, X), X = 1, write('Game has already started'), nl.
 
 main_loop :-
 	repeat,
 	write('Say something > '),
 	read(X),
-	format('You said: ~w', [X]), nl,
-	X = exit, !.
+	/* format('You said: ~w', [X]), nl, */
+	X,
+	X = quit, !.
 
-welcome :-
-	write('Welcome to the 77th Hunger Games!'), nl,
-	write('You have been chosen as one of the lucky contestants. '),
-	write('Be the last man standing and you will be remembered as one of the victors.'),
+welcome :- 	
+	write('Welcome to the ITB\'s Hunger Games!!'), nl,
+	write('You have been chosen as our students here... '), nl,
+	write('So.. Please gradute from here with your best shot and try not to dropout from here~'),
 	nl.
+
+quit :- g_assign(started, 0), write('Thanks for playing!'), nl.
