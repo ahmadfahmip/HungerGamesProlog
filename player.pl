@@ -3,7 +3,7 @@
 default_health(100).
 default_hunger(20).
 default_thirst(50).
-default_weapon('nothing').
+default_weapon(nothing).
 default_item_list([]).
 
 init_player(ID):-
