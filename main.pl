@@ -17,7 +17,8 @@ start :-
 /* init everything when game started without load */
 init_everything :-
 	init_every_item,
-	init_player.
+	init_player,
+	init_enemy(10).
 
 main_loop :-
 	repeat,
