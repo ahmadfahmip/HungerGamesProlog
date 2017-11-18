@@ -1,6 +1,30 @@
+
+print_map(20,10):- !.
+print_map(20,Y):-
+  Y2 is Y+1,nl,
+  print_map(0,Y2),!.
+print_map(X,Y):-
+  Y=0,X2 is X+1, write('#'),!,
+  print_map(X2,Y).
+print_map(X,Y):-
+  Y=10,X2 is X+1, write('#'),!,
+  print_map(X2,Y).
+print_map(X,Y):-
+  X=0,X2 is X+1, write('#'),!,
+  print_map(X2,Y).
+print_map(X,Y):-
+  X=19,X2 is X+1, write('#'),!,
+  print_map(X2,Y).
+print_map(X,Y):-
+  X2 is X+1, write('-'),
+  print_map(X2,Y).
+
+map:- print_map(0,0).
+
+
 print_logo :- write('/////'),nl.
 
-print_start :-
+print_intro :-
   write('Welcome to the BLABLABLABLA '),nl,
   write('You have been chosen balbalabla'),nl.
 
