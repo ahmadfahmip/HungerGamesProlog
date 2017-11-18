@@ -26,7 +26,7 @@ help :-
 	write('- = Accessible'), nl,
 	write('X = Innaccessible'), nl.
 
-quit :-
+quit :- g_assign(started, 0).
 
 look :-
 

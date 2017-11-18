@@ -4,10 +4,15 @@ default_health(100).
 default_hunger(20).
 default_thirst(50).
 default_weapon(nothing).
-default_position(0,0).
 default_weapon(nothing).
-
 default_item_list([]).
+
+random_location(X, Y) :-
+  repeat,
+  random(1, 11, A), random(1, 21, B),
+  grid(A, B, Loc), 
+  Loc \== blank,
+  X is A, Y is B.
 
 init_player:-
   default_health(Health),
@@ -15,9 +20,9 @@ init_player:-
   default_thirst(Thirst),
   default_weapon(Weapon),
   default_item_list(ItemList),
-  default_position(X,Y),
+  random_location(X,Y),
   % FYI, assert buat masukin ke database
-  asserta(player(X,Y,Health,Hunger,Thirst,Weapon,ItemList)).
+  asserta(player(X,Y,Health,Hunger,Thirst,Weapon,ItemList)), !.
 
 % Health
 increase_health( Amount):-
